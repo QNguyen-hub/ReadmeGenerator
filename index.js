@@ -5,69 +5,68 @@ inquirer
   .prompt([
     {
       type: "input",
-      message: "What is your user name?",
-      name: "username",
+      message: "What is the name of the project?",
+      name: "projectname",
     },
     {
       type: "input",
-      message: "Where do you live?",
-      name: "location",
+      message: "What is it about??",
+      name: "about",
     },
     {
       type: "input",
-      message: "Tell something about yourself?",
-      name: "bio",
+      message: "What coding languages is being used for this project?",
+      name: "languages",
     },
     {
       type: "input",
-      message: "What is your Linkedin URL?",
-      name: "linkedin",
+      message: "What npm are being use for project?",
+      name: "npm",
     },
     {
       type: "input",
-      message: "What is your Github URL?",
-      name: "github",
+      message: "What issues did you have when working on this project?",
+      name: "issue",
+    },
+    {
+      type: "input",
+      message: "What are the future prospect of this project?",
+      name: "prospect",
+    },
+    {
+      type: "input",
+      message: "Link to the screenshot or video of the project?",
+      name: "screenshot",
+    },
+    {
+      type: "input",
+      message: "GitHub Pages link.",
+      name: "pages",
+    },
+    {
+      type: "input",
+      message: "GitHub Repository link.",
+      name: "repository",
     },
   ])
   .then((userInput) =>
     fs.writeFile(
-      "index.html",
-      `<!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title></title>
-  </head>
-  <body id="main">
-      <h1>Hi! My name is ${userInput.username}</h1>
-      <p>I am from ${userInput.location}</p>
-      <p>${userInput.bio}</p>
-      <div>
-      <a href="https://${userInput.linkedin}">Linkedin</a>
-      <a href="https://${userInput.github}">Github</a>
-      </div>
-      <style>
-      #main {
-        background-color: whitesmoke;
-        display: flex;
-        flex-direction: column;
-        margin: 50px;
-      }
-
-      a {
-        display: flex;
-        border: 1px solid linen;
-        justify-content: space-between;
-        flex-direction: column;
-        background-color: white;
-        padding: 10px;
-        width: 150px;
-      }
-    </style>
-  </body>
-  </html>`,
+      "README.MD",
+      `<h># ${userInput.projectname}</h1>
+      <p>This project is about ${userInput.about}</p>
+      <h2># Languages</h2>
+      <p> This project uses these languages ${userInput.languages}</p>
+      <h2># NPM</h2>
+      <p> This project utilizes these NPM ${userInput.npm}
+      <h2># Challenges</h2>
+      <p> Some of the challenges of this projects are: ${userInput.issues}</p>
+      <h2># Prospect</h2>
+      <p> Future prospect or development of this project are: ${userInput.prospect}</p>
+      <h2># Screenshot or Video</h2>
+      <h2># GitHub Pages</h2>
+      <a href=${userInput.pages}>View the GitHub Pages</a>
+      <h2># GitHub Repository</h2>
+      <a href=${userInput.repository}>View the GitHub Repository</a>`,
       (err) => (err ? console.error(err) : console.log("Success!"))
     )
   );
